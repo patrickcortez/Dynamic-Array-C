@@ -24,7 +24,7 @@ D_array InitArray(const int Size){ // Dynamic Array initialization
 
 
 
-void Push_Back(D_array* list,int element){
+void Push_Back(D_array* list,int element){ // add new elements
 
     if(list->count == list->capacity){
         size_t newCapacity = SetCapacity(list->count);
@@ -42,7 +42,16 @@ void Push_Back(D_array* list,int element){
     list->count++;
 }
 
-void Pop_Back(D_array* list){
+void Mod_At(D_array* list,int index,int elment){ // modify elements in the list
+    if(index >= list->count || index < 0){
+        printf("Index out of bounds\n");
+        exit(EXIT_FAILURE);
+    }
+
+    *(list->buffer+index) = elment;
+}
+
+void Pop_Back(D_array* list){ // delete element at back
     if(list->count > 0){
         list->count--;
         *(list->buffer+list->count) = 0;

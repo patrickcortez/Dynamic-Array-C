@@ -24,8 +24,7 @@ int Summation(char* string){
 int main(int argc,char** argv){
 
     char fallback[] = "None";
-    char* command = (argc > 1)? Lowered(argv[1]): fallback;
-    
+    char* command = (argc > 1)? Lowered(argv[1]): fallback;    
 
     // Dynamic array declaration
     D_array array= InitArray(5);
@@ -36,8 +35,9 @@ int main(int argc,char** argv){
         Push_Back(&array,Summation(argv[2])); // 1
         Push_Back(&array,'a'); // 2
         Pop_Back(&array);
+        Mod_At(&array,1,69); // argv[1] to 69
 
-        printf("Pushed %i\n",Get(&array,2));
+        printf("Pushed %i\n",Get(&array,1));
         
     }else{
         printf("Command %s, is not a valid command!\n",command);
