@@ -10,11 +10,11 @@ typedef struct D_array{ // D_Array definition
     size_t count; 
 }D_array;
 
-size_t SetCapacity(int Size){ // small helper for alignment
+static inline size_t SetCapacity(int Size){ // small helper for alignment
     return ((Size + (Align-1))/Align)*Align;
 }
 
-D_array InitArray(const int Size){ // Dynamic Array initialization
+static inline D_array InitArray(const int Size){ // Dynamic Array initialization
     return (D_array){
         .buffer = Alloc(Size),
         .capacity = SetCapacity(Size),
@@ -24,7 +24,7 @@ D_array InitArray(const int Size){ // Dynamic Array initialization
 
 
 
-void Push_Back(D_array* list,int element){ // add new elements
+static void Push_Back(D_array* list,int element){ // add new elements
 
     if(list->count == list->capacity){
         size_t newCapacity = SetCapacity(list->count);
@@ -42,7 +42,7 @@ void Push_Back(D_array* list,int element){ // add new elements
     list->count++;
 }
 
-void Mod_At(D_array* list,int index,int elment){ // modify elements in the list
+static void Mod_At(D_array* list,int index,int elment){ // modify elements in the list
     if(index >= list->count || index < 0){
         printf("Index out of bounds\n");
         exit(EXIT_FAILURE);
@@ -51,7 +51,7 @@ void Mod_At(D_array* list,int index,int elment){ // modify elements in the list
     *(list->buffer+index) = elment;
 }
 
-void Pop_Back(D_array* list){ // delete element at back
+static void Pop_Back(D_array* list){ // delete element at back
     if(list->count > 0){
         list->count--;
         *(list->buffer+list->count) = 0;
@@ -61,7 +61,7 @@ void Pop_Back(D_array* list){ // delete element at back
     }
 }
 
-int Get(D_array* list,int index){
+static int Get(D_array* list,int index){
     if(index < 0 || index >= list->count){
         printf("Index out of bounds\n");
         exit(EXIT_FAILURE);
