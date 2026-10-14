@@ -32,15 +32,15 @@ int main(int argc,char** argv){
 
 
     if(strcmp(command,"push") == 0){
-        Push_Back(&array,'c');
-        Push_Back(&array,Summation(argv[2]));
-        Push_Back(&array,'a');
+        Push_Back(&array,'c'); // 0
+        Push_Back(&array,Summation(argv[2])); // 1
+        Push_Back(&array,'a'); // 2
         Pop_Back(&array);
 
-        printf("Pushed %i",Get(&array,2));
+        printf("Pushed %i\n",Get(&array,2));
         
     }else{
-        printf("Command %s, is not a valid command!",command);
+        printf("Command %s, is not a valid command!\n",command);
     }
 
     return 0;

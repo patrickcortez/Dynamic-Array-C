@@ -31,7 +31,7 @@ void Push_Back(D_array* list,int element){
         int* newBuffer = realloc(list->buffer,newCapacity);
         
         if(!newBuffer){
-            printf("Allocation Failed!");
+            printf("Allocation Failed!\n");
             exit(EXIT_FAILURE);
         }
 
@@ -47,14 +47,14 @@ void Pop_Back(D_array* list){
         list->count--;
         *(list->buffer+list->count) = 0;
     }else{
-        printf("Array is Empty!");
+        printf("Array is Empty!\n");
         exit(EXIT_FAILURE);
     }
 }
 
 int Get(D_array* list,int index){
-    if(index < 0 || index > list->count){
-        printf("Index out of bounds");
+    if(index < 0 || index >= list->count){
+        printf("Index out of bounds\n");
         exit(EXIT_FAILURE);
     }
 
