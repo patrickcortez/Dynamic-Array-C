@@ -46,10 +46,10 @@ void Pop_Back(D_array* list){
     if(list->count > 0){
         list->count--;
         *(list->buffer+list->count) = 0;
+    }else{
+        printf("Array is Empty!");
+        exit(EXIT_FAILURE);
     }
-
-    printf("Array is Empty!");
-    exit(EXIT_FAILURE);
 }
 
 int Get(D_array* list,int index){
